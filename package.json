@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/karma/bin/karma"
+    "test": "./node_modules/karma/bin/karma start"
   },
   "author": "Guro jiojiajiu Bokum",
   "license": "ISC",

@@ -21,6 +21,10 @@ or
 * node server.js
 * open http://localhost:8000 (by default)
 
+## Testing (Midway)
+
+* npm test
+
 ### Dependencies
 
 * Should be started mongod on :27017
