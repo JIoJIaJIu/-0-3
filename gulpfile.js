@@ -13,12 +13,12 @@ gulp.task('clean', function () {
 });
 
 gulp.task('desktop prototype', ['clean'], function () {
-    gulp.src('src/desktop/**/*', {base: 'desktop'})
+    gulp.src('src/desktop/**/*', {base: 'src/desktop'})
         .pipe(gulp.dest(OUTPUT));
 });
 
 gulp.task('mobile prototype', ['clean'], function () {
-    gulp.src('src/mobile/**/*', {base: 'mobile'})
+    gulp.src('src/mobile/**/*', {base: 'src/mobile'})
         .pipe(gulp.dest(OUTPUT));
 });
 

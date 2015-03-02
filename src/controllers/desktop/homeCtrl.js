@@ -19,7 +19,6 @@ function ($scope, $log, $location, GiftCardOffer, Business, fakeAuth) {
     $scope.Home = {
         pageNumber: 0,
         pageSize: 8,
-        totalPages: 0,
         result: [],
         selectedOffer: null,
         comments: null,
@@ -41,9 +40,9 @@ function ($scope, $log, $location, GiftCardOffer, Business, fakeAuth) {
                 return;
             }
 
-            $scope.Home.pageNumber = data.pageNumber;
-            $scope.Home.pageSize = data.pageSize;
-            $scope.Home.result = data.items;
+            $scope.Home.pageNumber = criteria.pageNumber;
+            $scope.Home.pageSize = criteria.pageSize;
+            $scope.Home.result = items;
         });
     }
 
@@ -120,11 +119,7 @@ function ($scope, $log, $location, GiftCardOffer, Business, fakeAuth) {
         if ($scope.pause)
             return;
 
-        var totalPages = $scope.Home.totalPages;
         var pageNumber = $scope.Home.pageNumber;
-
-        if (totalPages && (pageNumber >= totalPages))
-            return;
 
         criteria.pageNumber = pageNumber + 1;
         criteria.pageSize = $scope.Home.pageSize;
@@ -135,9 +130,9 @@ function ($scope, $log, $location, GiftCardOffer, Business, fakeAuth) {
                 return;
             }
 
-            $scope.Home.pageNumber = data.pageNumber;
-            $scope.Home.totalPages = data.totalPages;
-            $scope.Home.result = [].concat($scope.Home.result, data.items);
+            $scope.Home.pageNumber = criteria.pageNumber;
+            $scope.Home.pageSize = criteria.pageSize;
+            $scope.Home.result = [].concat($scope.Home.result, data);
             $scope.pause = false;
         });
     }

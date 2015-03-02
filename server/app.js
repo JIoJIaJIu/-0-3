@@ -23,6 +23,7 @@ var bodyParser = require('body-parser');
 var schedule = require('node-schedule');
 var job = require('./lib/scheduleJob');
 
+app.use(express.static( path.join(__dirname, '../build')) );
 // enable CORS
 app.use(cors());
 // only use bodyParser for json and urlencoded
@@ -44,7 +45,6 @@ app.listen(port);
 logger.info('App started on port ' + port);
 // Initial DB for testing
 require('./test_files/initialDB.js')(true);
-app.use(express.static( path.join(__dirname, '../build')) );
 
 // schedule job
 schedule.scheduleJob('* * '+ config.OFFER_EXPIRATION_DAYS +' * *', job.runJob());

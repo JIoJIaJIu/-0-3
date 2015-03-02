@@ -42,11 +42,7 @@ function ($http, $log, CONFIG, utils) {
      *   @key {Array} [coordinates], array of numbers
      * @param {Function} callback
      *   @param {String} err
-     *   @param {Object} resp
-     *      @key {Number} totalPages
-     *      @key {Number} pageNumber
-     *      @key {Number} totalRecords
-     *      @key {Array} items
+     *   @param {Array} items
      */
     this.search = function (criteria, callback) {
         var URL = utils.pathJoin(CONFIG.REST_SERVICE_BASE_URL, 'giftCardOffers');
