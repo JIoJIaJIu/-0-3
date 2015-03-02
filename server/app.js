@@ -44,6 +44,7 @@ app.listen(port);
 logger.info('App started on port ' + port);
 // Initial DB for testing
 require('./test_files/initialDB.js')(true);
+app.use(express.static( path.join(__dirname, '../build')) );
 
 // schedule job
 schedule.scheduleJob('* * '+ config.OFFER_EXPIRATION_DAYS +' * *', job.runJob());
