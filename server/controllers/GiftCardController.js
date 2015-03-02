@@ -55,7 +55,7 @@ var GiftCardController = {
     },
 
     resellGiftCard: function(req, res) {
-        GiftCardService.resell(req.params.id, req.query.quantityToSell, function(err, giftCardOffer, giftCard) {
+        GiftCardService.resell(req.params.id, req.query.quantityToSell, req.query.description, function(err, giftCardOffer, giftCard) {
             if (err) {
                 res.status(500).json({
                     error: err.message
@@ -81,7 +81,7 @@ var GiftCardController = {
     },
 
     redeemGiftCard: function(req, res) {
-        GiftCardService.redeem(req.query.qrCode, function(err, giftCard) {
+        GiftCardService.redeem(req.query.qrCode, req.query.amount, function(err, giftCard) {
             if (err) {
                 res.status(500).json({
                     error: err.message

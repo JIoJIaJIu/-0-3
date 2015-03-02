@@ -77,6 +77,16 @@ var getById = exports.get = function(id, callback) {
 };
 
 /**
+ * Get a giftCardOffers from the database
+ *
+ * @param  {Array}       ids        Array of id of the giftCardOffer to fetch
+ * @param  {Function}   callback    callback function<error, giftCardOffer>
+ */
+exports.getGiftCardsOffers = function(ids, callback) {
+  GiftCardOffer.find({_id: { $in: ids }}, callback);
+};
+
+/**
  * Update a giftCardOffer
  *
  * @param  {UUID}       id          id of the giftCardOffer to update

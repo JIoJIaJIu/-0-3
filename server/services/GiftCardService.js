@@ -307,9 +307,10 @@ var GiftCardService = {
      * Resell gift card.
      * @param id {String} the gift card id
      * @param quantityToSell {Integer} the quantity to sell
+     * @param description {String} description 
      * @param callback {Function<error:Error, giftCardOffer:GiftCardOffer, giftCard:GiftCard>} the callback function
      */
-    resell: function(id, quantityToSell, callback) {
+    resell: function(id, quantityToSell, description, callback) {
         var error = {};
         if (!helper.validateRequiredIntParameter(quantityToSell, "quantityToSell", error)) {
             callback(error.Err);
@@ -334,7 +335,7 @@ var GiftCardService = {
                             "businessPicture": existing.businessPicture,
                             "businessTelephone": existing.businessTelephone,
                             "discount": existing.discount,
-                            "description": existing.description,
+                            "description": description || existing.description,
                             "createdOn": new Date(),
                             "createdBy": existing.createdBy,
                             "modifedOn": new Date(),
@@ -400,9 +401,10 @@ var GiftCardService = {
     /**
      * Redeem method
      * @param qrCode {String} the qrCode
+     * @param amount {Number} amount to redeem
      * @param callback {Function<error:Error, result:GiftCard>} the callback function
      */
-    redeem: function(qrCode, callback) {
+    redeem: function(qrCode, amount, callback) {
         var error = {};
         if (!helper.validateRequiredParameter(qrCode, "qrCode", error)) {
             callback(error.Err);
@@ -428,24 +430,24 @@ var GiftCardService = {
                     if (!giftCard) {
                         callback(new Error("GiftCard is not exist with id in giftCardRedeem"));
                     }else{
-                        if (giftCard.quantity < giftCardRedeem.amount) {
+                        if (giftCard.quantity < amount) {
                             callback(new Error("giftCard.quantity is not enough"));
                         } else if (giftCardRedeem.redeemedAmount < giftCardRedeem.amount) {
                             callback(new Error("giftCardRedeem.redeemedAmount is not enough"));
                         } else {
-                            if (giftCard.quantity === giftCardRedeem.amount) {
+                            if (giftCard.quantity === amount) {
                                 _.extend(giftCard, {
                                     quantity: 0,
                                     status: "INACTIVE"
                                 });
                             } else {
                                 _.extend(giftCard, {
-                                    quantity: giftCard.quantity - giftCardRedeem.amount
+                                    quantity: giftCard.quantity - amount
                                 });
                             }
 
                             _.extend(giftCardRedeem, {
-                                redeemedAmount: giftCardRedeem.redeemedAmount - giftCardRedeem.amount
+                                redeemedAmount: giftCardRedeem.redeemedAmount - amount
                             });
 
 

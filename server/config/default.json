@@ -10,6 +10,7 @@
       "POST /giftCardOffers": "GiftCardOfferController#createGiftCardOffer",
       "GET /giftCardOffers": "GiftCardOfferController#searchGiftCardOffer",
       "GET /giftCardOffers/:id": "GiftCardOfferController#getGiftCardOffer",
+      "GET /giftCardOffers/ids/*": "GiftCardOfferController#getGiftCardOffers",
       "DELETE /giftCardOffers/:id": "GiftCardOfferController#deleteGiftCardOffer",
       "PUT /giftCardOffers/:id": "GiftCardOfferController#updateGiftCardOffer",
       "POST /giftCardOffers/:id/cancel": "GiftCardOfferController#cancelGiftCardOffer",

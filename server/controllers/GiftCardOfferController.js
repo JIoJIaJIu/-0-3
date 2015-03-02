@@ -173,6 +173,38 @@ exports.getGiftCardOffer = function(req, res, next) {
 };
 
 /**
+ * Route handler for GET /giftCardOffers/ids/*
+ * 
+ * @param  {Object}     req         express request instance
+ * @param  {Object}     res         express response instance
+ * @param  {Function}   next        next function
+ */
+exports.getGiftCardOffers = function(req, res, next) {
+  var param = req.params[0];
+  if (!param) {
+      return next(new NotFoundError('No one gift card offer id was pointed'));
+  }
+
+  var ids = param.split('/');
+  console.log(ids);
+
+  giftCardOfferService.getGiftCardsOffers(ids, function(err, result) {
+    if(err) {
+      return next(err);
+    } else if(!result) {
+      return next(new NotFoundError('Gift card offers not found'));
+    }
+
+    var transformed = controllerHelper.filterObject(result, ['createdOn', 'createdBy', 'modifiedOn', 'modifiedBy', 'resaleForGiftCard', 'expirationDate', 'condition', 'redeemedQuantity']);
+    req.data = {
+      status: controllerHelper.HTTP_OK,
+      content: transformed
+    };
+    next();
+  });
+};
+
+/**
  * Route handler for DELETE /giftCardOffers/:id
  * 
  * @param  {Object}     req         express request instance
