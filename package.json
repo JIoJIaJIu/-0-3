@@ -1,0 +1,24 @@
+{
+  "name": "MomAndPop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma"
+  },
+  "author": "Guro jiojiajiu Bokum",
+  "license": "ISC",
+  "homepage": "https://github.com/JIoJIaJIu/-0-3",
+  "devDependencies": {
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-firefox-launcher": "^0.1.4",
+    "karma-jasmine": "^0.3.5",
+    "ng-midway-tester": "^2.0.5",
+    "del": "^1.1.1",
+    "gulp": "^3.8.11",
+    "gulp-cli": "^0.1.5",
+    "gulp-concat": "^2.5.1"
+  }
+}
