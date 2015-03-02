@@ -12,7 +12,15 @@ describe("Midway: GiftCardService", function () {
         auth = new FakeAuth($http);
     });
 
-    it('create', function (done) {
+    it('get', function (done) {
         auth.loginAsFounder();
+
+        var service = tester.inject('GiftCard');
+        auth.loginAsFounder();
+
+        service.get('54c1b1a39d64e6004475efdf', function (err, card) {
+            expect(err).toBe(null);
+            done();
+        });
     });
 });
