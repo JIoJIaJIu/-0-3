@@ -1,6 +1,6 @@
 'use strict';
 
-var mongoose = require('../datasource').getMongoose(),
+var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var SessionTokenSchema = new Schema({

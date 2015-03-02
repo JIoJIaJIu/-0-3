@@ -116,7 +116,6 @@ BusinessSchema.options.toJSON = {
         delete ret.isVerified;
         delete ret.isSubscriptionExpired;
         delete ret.braintreeAccountId;
-        delete ret.coordinates;
         delete ret.notificationDate;
 
         if (!doc.isNamePublic) {

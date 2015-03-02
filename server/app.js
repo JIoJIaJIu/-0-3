@@ -8,6 +8,7 @@
 var express = require('express'),
   logger = require('./logger').getLogger(),
   path = require('path'),
+  cors = require('cors'),
   app = express();
 
 var router = require('./middlewares/router'),
@@ -22,6 +23,8 @@ var bodyParser = require('body-parser');
 var schedule = require('node-schedule');
 var job = require('./lib/scheduleJob');
 
+// enable CORS
+app.use(cors());
 // only use bodyParser for json and urlencoded
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

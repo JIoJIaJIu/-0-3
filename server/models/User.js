@@ -1,7 +1,7 @@
 'use strict';
 
-var mongoose = require('../datasource').getMongoose(),
-  Schema = mongoose.Schema;
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
   firstName: { type: String, required: true },
@@ -15,7 +15,14 @@ var UserSchema = new Schema({
   isLocationPublic: { type: Boolean, required: false, Default: true },
   isPicturePublic: { type: Boolean, required: false, Default: true },
   passwordHash: { type: String, required: false },
-  userRoles: [{businessId: String, role: {type: String, uppercase: true, enum: ['INDIVIDUAL_USER', 'BUSINESS_EMPLOYEE', 'BUSINESS_ADMIN', 'CLIENT', 'PLATFORM_EMPLOYEE']}}],
+  userRoles: [{
+      businessId: String,
+      role: {
+          type: String,
+          uppercase: true,
+          enum: ['INDIVIDUAL_USER', 'BUSINESS_EMPLOYEE', 'BUSINESS_ADMIN', 'CLIENT', 'PLATFORM_EMPLOYEE']
+      }
+  }],
   interestedOfferCategory: String,
   linkedSocialNetwork: {type: String, required: false, uppercase: true, enum: ['FACEBOOK', 'TWITTER', 'LINKEDIN']},
   linkedSocialNetworkUserId: String,

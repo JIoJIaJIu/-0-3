@@ -11,7 +11,7 @@
 
 
 var mongoose = require('mongoose'),
-    config = require("../config");
+    config = require('config');
 
 var db = mongoose.createConnection(config.MONGODB_URL, {
     server: {
@@ -20,10 +20,15 @@ var db = mongoose.createConnection(config.MONGODB_URL, {
 });
 
 module.exports = {
-    GiftCard: db.model('GiftCard', require('./GiftCard')),
-    GiftCardRedeem: db.model('GiftCardRedeem', require('./GiftCardRedeem')),
-    BusinessType: db.model('BusinessType', require('./BusinessType')),
-    Business: db.model('Business', require('./Business')),
     ActionType: db.model('ActionType', require('./ActionType')),
-    ActionRecord: db.model('ActionRecord', require('./ActionRecord'))
+    ActionRecord: db.model('ActionRecord', require('./ActionRecord')),
+    Business: db.model('Business', require('./Business')),
+    BusinessType: db.model('BusinessType', require('./BusinessType')),
+    GiftCard: db.model('GiftCard', require('./GiftCard')),
+    GiftCardOffer: db.model('GiftCardOffer', require('./GiftCardOffer')),
+    GiftCardOfferComment: db.model('GiftCardOfferComment', require('./GiftCardOfferComment')),
+    GiftCardRedeem: db.model('GiftCardRedeem', require('./GiftCardRedeem')),
+    OfferCategory: db.model('OfferCategory', require('./OfferCategory')),
+    SessionToken: db.model('SessionToken', require('./SessionToken')),
+    User: db.model('User', require('./User'))
 };

@@ -9,7 +9,7 @@
  */
 "use strict";
 
-var config = require('../config'),
+var config = require('config'),
     helper = require('../helpers/helper'),
     _ = require('underscore'),
     async = require('async');

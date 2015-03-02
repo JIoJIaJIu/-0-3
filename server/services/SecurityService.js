@@ -9,12 +9,10 @@
 
 var config = require('config');
 
-var SessionTokenSchema = require('../models/SessionToken'),
-  db = require('../datasource').getDb(config.MONGODB_URL),
-  SessionToken = db.model('SessionToken', SessionTokenSchema);
+var SessionToken = require('../models/index').SessionToken;
 
 var userService = require('./UserService'),
-  async = require('async');
+    async = require('async');
 
 var bcrypt = require('bcrypt-nodejs'),
   jwt = require('jwt-simple'),

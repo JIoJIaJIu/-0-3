@@ -8,15 +8,10 @@
 /* Globals */
 var config = require('config');
 
-var GiftCardOfferSchema = require('../models/GiftCardOffer'),
-  GiftCardSchema = require('../models/GiftCard'),
-  GiftCardOfferCommentSchema = require('../models/GiftCardOfferComment'),
-  UserSchema = require('../models/User'),
-  db = require('../datasource').getDb(config.MONGODB_URL),
-  GiftCardOffer = db.model('GiftCardOffer', GiftCardOfferSchema),
-  GiftCard = db.model('GiftCard', GiftCardSchema),
-  GiftCardOfferComment = db.model('GiftCardOfferComment', GiftCardOfferCommentSchema),
-  User = db.model('User', UserSchema);
+var GiftCardOffer = require('../models/index').GiftCardOffer,
+    GiftCard = require('../models/index').GiftCard,
+    GiftCardOfferComment = require('../models/index').GiftCardOfferComment,
+    User = require('../models/index').User;
 
 var businessService = require('./BusinessService');
 var async = require('async');

@@ -1,7 +1,7 @@
 'use strict';
 
-var mongoose = require('../datasource').getMongoose(),
-  Schema = mongoose.Schema;
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
 var GiftCardOfferSchema = new Schema({
   businessId: { type: String, required: true },

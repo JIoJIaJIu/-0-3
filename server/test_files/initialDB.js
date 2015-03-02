@@ -9,7 +9,19 @@
  */
 "use strict";
 
-var COLLECTION_NAMES = ["ActionType", "ActionRecord", "BusinessType", "Business", "GiftCard", "GiftCardRedeem"];
+var COLLECTION_NAMES = [
+    "ActionType",
+    "ActionRecord",
+    "Business",
+    "BusinessType",
+    "GiftCard",
+    "GiftCardOffer",
+    "GiftCardOfferComment",
+    "GiftCardRedeem",
+    "OfferCategory",
+    "SessionToken",
+    "User",
+];
 
 var _ = require('underscore'),
     dbModels = require('../models');
@@ -36,11 +48,15 @@ function initialCollection(collectionName, clearFlag) {
             return;
         }
 
-        var data = require('./' + collectionName + '.json');
-        _.each(data, function(value) {
-            new schema(value).save();
-        });
-        console.log('DB Collection [' + collectionName + '] is initialised.');
+        try {
+            var data = require('./' + collectionName + '.json');
+            _.each(data, function(value) {
+                new schema(value).save();
+            });
+            console.log('DB Collection [' + collectionName + '] is initialised.');
+        } catch (e) {
+            console.log(e);
+        }
     });
 
 }

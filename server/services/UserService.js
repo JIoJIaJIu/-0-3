@@ -5,12 +5,7 @@
  * This class exports the contract methods between User Model and controllers
  */
 
-/* Globals */
-var UserSchema = require('../models/User'),
-  config = require('config'),
-  db = require('../datasource').getDb(config.MONGODB_URL),
-  User = db.model('User', UserSchema);
-
+var User = require('../models/index').User;
 var async = require('async');
 
 var securityService = require('./SecurityService'),

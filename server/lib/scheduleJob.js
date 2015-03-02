@@ -8,9 +8,7 @@
 var config = require('config');
 var giftCardOfferService = require('../services/GiftCardOfferService');
 var businessService = require('../services/BusinessService');
-var GiftCardSchema = require('../models/GiftCard').GiftCardSchema,
-  db = require('../datasource').getDb(config.MONGODB_URL),
-  GiftCard = db.model('GiftCard', GiftCardSchema);
+var GiftCard = require('../models/index').GiftCard;
 var _ = require('lodash');
 var logger = require('../logger').getLogger();
 var millis = 1000 * 60 * 60 * 24 * config.OFFER_EXPIRATION_DAYS;
